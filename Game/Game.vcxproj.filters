@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="system">
+      <UniqueIdentifier>{22dd8095-74f9-46df-81a1-36675a040b1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{11828c82-1050-4b12-af91-622babf24ecf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{70e128b2-179a-475e-b30f-7baf8f4b6699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameCamera">
+      <UniqueIdentifier>{faf740b7-5d12-4d72-8808-26368643c209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BackGround">
+      <UniqueIdentifier>{9e262563-e841-414e-9d8c-28d8ffbc7c5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameUI">
+      <UniqueIdentifier>{e8fcb793-f23b-4edf-9fc0-e389ba2efcaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Title">
+      <UniqueIdentifier>{28a86e03-b084-4672-ab28-51d5f2f3f581}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer">
+      <UniqueIdentifier>{376a2314-4547-499e-9a97-2d08f0aed8e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enemy">
+      <UniqueIdentifier>{3247fefc-2269-4fbf-9ab9-71df16fdab45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Score">
+      <UniqueIdentifier>{eb3ee4c0-3866-471a-8ebd-9f92dee9b232}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Grainspike">
+      <UniqueIdentifier>{a18e8bdc-dd48-4f5d-8cfa-b655f0d93863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Orbspike">
+      <UniqueIdentifier>{2cbc16ba-e509-410b-a28f-9a3d0a712372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pelletspike">
+      <UniqueIdentifier>{3b6c1208-5ffa-4662-9601-3cd560665df2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Seaofclouds">
+      <UniqueIdentifier>{88a42772-84e7-4ec1-81fc-9ceaa56f3236}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="system\system.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCamera.cpp">
+      <Filter>GameCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI.cpp">
+      <Filter>GameUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Orbspike.cpp">
+      <Filter>Orbspike</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>Score</Filter>
+    </ClCompile>
+    <ClCompile Include="Grainspike.cpp">
+      <Filter>Grainspike</Filter>
+    </ClCompile>
+    <ClCompile Include="Pelletspike.cpp">
+      <Filter>Pelletspike</Filter>
+    </ClCompile>
+    <ClCompile Include="Seaofclouds.cpp">
+      <Filter>Seaofclouds</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="system\system.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCamera.h">
+      <Filter>GameCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI.h">
+      <Filter>GameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Orbspike.h">
+      <Filter>Orbspike</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>Score</Filter>
+    </ClInclude>
+    <ClInclude Include="Grainspike.h">
+      <Filter>Grainspike</Filter>
+    </ClInclude>
+    <ClInclude Include="Pelletspike.h">
+      <Filter>Pelletspike</Filter>
+    </ClInclude>
+    <ClInclude Include="Seaofclouds.h">
+      <Filter>Seaofclouds</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h" />
+  </ItemGroup>
+</Project>
