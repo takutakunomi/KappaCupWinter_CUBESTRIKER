@@ -45,6 +45,7 @@ private:
 	void StartAfterMidBoss();                                    // 中ボス撃破後の区間へ進む
 	void SpawnMidBoss();                                         // 中ボスを出す
 	void SpawnBoss();                                            // ボスを出す
+	void CreateHpBar(Enemy* target);                             // 体力バーを出す
 
 private:
 	EnPhase phase = enPhase_BeforeMidBoss;

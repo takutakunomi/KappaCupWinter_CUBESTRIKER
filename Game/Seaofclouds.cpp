@@ -6,6 +6,7 @@
 #include "Pelletspike.h"
 #include "PurpleBaron.h"
 #include "FauxOni.h"
+#include "BossHpBar.h"
 
 namespace
 {
@@ -160,6 +161,7 @@ void Seaofclouds::SpawnMidBoss()
 {
 	midBoss = NewGO<PurpleBaron>(0, "enemy");   // 名前を "enemy" にすると、プレイヤーの弾が当たる
 	midBoss->SetPosition(Vector3(MIDBOSS_X, MIDBOSS_Y, ENEMY_Z));
+	CreateHpBar(midBoss);
 	phase = enPhase_MidBoss;
 }
 
@@ -168,7 +170,15 @@ void Seaofclouds::SpawnBoss()
 {
 	boss = NewGO<FauxOni>(0, "enemy");   // 名前を "enemy" にすると、プレイヤーの弾が当たる
 	boss->SetPosition(Vector3(BOSS_X, BOSS_Y, ENEMY_Z));
+	CreateHpBar(boss);
 	phase = enPhase_Boss;
+}
+
+// 敵の体力バーを出す(敵が倒されると、バーも消える)
+void Seaofclouds::CreateHpBar(Enemy* target)
+{
+	BossHpBar* hpBar = NewGO<BossHpBar>(1, "bosshpbar");
+	hpBar->SetTarget(target);
 }
 
 // 中ボス撃破後の区間へ進む(時間と予定の番号を最初に戻す)

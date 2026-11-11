@@ -9,6 +9,7 @@
 #include "Seaofclouds.h"
 #include "Enemy.h"
 #include "GameOver.h"
+#include "BossHpBar.h"
 
 bool Game::Start()
 {
@@ -54,6 +55,12 @@ void Game::Finish()
 	DeleteGO(timer);
 	DeleteGO(score);
 	DeleteGO(FindGO<Seaofclouds>("seaofclouds"));
+
+	BossHpBar* hpBar = FindGO<BossHpBar>("bosshpbar");
+	if (hpBar != nullptr)
+	{
+		DeleteGO(hpBar);
+	}
 
 	for (Enemy* enemy : FindGOs<Enemy>("enemy"))
 	{
