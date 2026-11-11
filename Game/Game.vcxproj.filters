@@ -43,6 +43,15 @@
     <Filter Include="Seaofclouds">
       <UniqueIdentifier>{88a42772-84e7-4ec1-81fc-9ceaa56f3236}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameOver">
+      <UniqueIdentifier>{08bd8cac-90ce-4796-8267-2c4e1e1c998c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PurpleBaron">
+      <UniqueIdentifier>{b5df6045-f862-4a36-ac9c-300488371d62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FauxOni">
+      <UniqueIdentifier>{fa995fd2-df64-4a33-b3d1-bb7c05938d13}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -89,7 +98,15 @@
     <ClCompile Include="Seaofclouds.cpp">
       <Filter>Seaofclouds</Filter>
     </ClCompile>
-    <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="GameOver.cpp">
+      <Filter>GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="PurpleBaron.cpp">
+      <Filter>PurpleBaron</Filter>
+    </ClCompile>
+    <ClCompile Include="FauxOni.cpp">
+      <Filter>FauxOni</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -135,6 +152,14 @@
     <ClInclude Include="Seaofclouds.h">
       <Filter>Seaofclouds</Filter>
     </ClInclude>
-    <ClInclude Include="GameOver.h" />
+    <ClInclude Include="GameOver.h">
+      <Filter>GameOver</Filter>
+    </ClInclude>
+    <ClInclude Include="PurpleBaron.h">
+      <Filter>PurpleBaron</Filter>
+    </ClInclude>
+    <ClInclude Include="FauxOni.h">
+      <Filter>FauxOni</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

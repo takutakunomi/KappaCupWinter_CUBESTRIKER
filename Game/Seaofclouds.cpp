@@ -4,11 +4,20 @@
 #include "Orbspike.h"
 #include "Grainspike.h"
 #include "Pelletspike.h"
+#include "PurpleBaron.h"
+#include "FauxOni.h"
 
 namespace
 {
 	const float ENEMY_Z = 1500.0f;      // 敵がいる奥行き(固定)
-	const float MIDBOSS_TIME = 50.0f;   // 中ボスが出る時間(ステージ開始から)
+
+	const float MIDBOSS_TIME = 3.0f;   // 中ボスが出る時間(ステージ開始から)
+	const float MIDBOSS_X = 0.0f;       // 中ボスの出現位置
+	const float MIDBOSS_Y = 60.0f;
+
+	const float BOSS_TIME = 3.0f;      // ボスが出る時間(中ボス撃破から)
+	const float BOSS_X = 0.0f;          // ボスの出現位置
+	const float BOSS_Y = 60.0f;
 
 	// ---- 中ボスの前の出現予定(ステージ開始からの時間) ----
 	// 書き方: { 時間, 敵の種類, X, Y }
@@ -64,20 +73,50 @@ void Seaofclouds::Update()
 {
 	phaseTimer += g_gameTime->GetFrameDeltaTime();
 
-	if (phase == enPhase_BeforeMidBoss)
+	switch (phase)
 	{
+	case enPhase_BeforeMidBoss:
 		UpdateSpawn(BEFORE_MIDBOSS, BEFORE_MIDBOSS_COUNT);
 
-		// 中ボスの時間になったら、撃破後の区間へ進む
-		// (中ボスを作ったら、「時間」ではなく「中ボスが倒されたとき」に切り替える)
+		// 中ボスの時間になったら、中ボスを出す
 		if (phaseTimer >= MIDBOSS_TIME)
 		{
+			SpawnMidBoss();
+		}
+		break;
+
+	case enPhase_MidBoss:
+		// 中ボスが倒されたら、撃破後の区間へ進む
+		if (midBoss == nullptr || !midBoss->IsAlive())
+		{
+			midBoss = nullptr;
 			StartAfterMidBoss();
 		}
-		return;
-	}
+		break;
 
-	UpdateSpawn(AFTER_MIDBOSS, AFTER_MIDBOSS_COUNT);
+	case enPhase_AfterMidBoss:
+		UpdateSpawn(AFTER_MIDBOSS, AFTER_MIDBOSS_COUNT);
+
+		// ボスの時間になったら、ボスを出す
+		if (phaseTimer >= BOSS_TIME)
+		{
+			SpawnBoss();
+		}
+		break;
+
+	case enPhase_Boss:
+		// ボスが倒されたら、ステージクリア
+		if (boss == nullptr || !boss->IsAlive())
+		{
+			boss = nullptr;
+			phase = enPhase_Clear;
+		}
+		break;
+
+	case enPhase_Clear:
+		// ステージクリアのあとの処理は、まだ作っていない
+		break;
+	}
 }
 
 // 時間が来た予定を、順番に出していく
@@ -114,6 +153,22 @@ void Seaofclouds::Spawn(const SpawnData& data)
 	}
 
 	enemy->SetPosition(Vector3(data.x, data.y, ENEMY_Z));
+}
+
+// 中ボス「ムラサキング」を出す
+void Seaofclouds::SpawnMidBoss()
+{
+	midBoss = NewGO<PurpleBaron>(0, "enemy");   // 名前を "enemy" にすると、プレイヤーの弾が当たる
+	midBoss->SetPosition(Vector3(MIDBOSS_X, MIDBOSS_Y, ENEMY_Z));
+	phase = enPhase_MidBoss;
+}
+
+// ボス「ニセオニ」を出す
+void Seaofclouds::SpawnBoss()
+{
+	boss = NewGO<FauxOni>(0, "enemy");   // 名前を "enemy" にすると、プレイヤーの弾が当たる
+	boss->SetPosition(Vector3(BOSS_X, BOSS_Y, ENEMY_Z));
+	phase = enPhase_Boss;
 }
 
 // 中ボス撃破後の区間へ進む(時間と予定の番号を最初に戻す)
