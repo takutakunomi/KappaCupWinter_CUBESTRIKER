@@ -12,7 +12,7 @@ namespace
 {
 	const float ENEMY_Z = 1500.0f;      // 敵がいる奥行き(固定)
 
-	const float MIDBOSS_TIME = 50.0f;   // 中ボスが出る時間(ステージ開始から)
+	const float MIDBOSS_TIME = 3.0f;   // 中ボスが出る時間(ステージ開始から)
 	const float MIDBOSS_X = 0.0f;       // 中ボスの出現位置
 	const float MIDBOSS_Y = 60.0f;
 

@@ -53,4 +53,24 @@ namespace BulletPattern
 			Fire(from, RotateYaw(center, firstAngle + angleStep * i), type, speed);
 		}
 	}
+
+	void ShootSpread(const Vector3& from, EnBulletType type, float speed, int count, float spreadAngle)
+	{
+		Vector3 center = CalcAimDirection(from);
+		float half = spreadAngle * 0.5f;
+
+		for (int i = 0; i < count; i++)
+		{
+			// -half 〜 +half のランダムな角度
+			float yaw = ((float)rand() / RAND_MAX * 2.0f - 1.0f) * half;
+			float pitch = ((float)rand() / RAND_MAX * 2.0f - 1.0f) * half;
+
+			Quaternion pitchRotation;
+			pitchRotation.SetRotationDegX(pitch);
+			Vector3 direction = RotateYaw(center, yaw);
+			pitchRotation.Apply(direction);
+
+			Fire(from, direction, type, speed);
+		}
+	}
 }
