@@ -18,7 +18,7 @@ bool Game::Start()
 
 	gameCamera = NewGO<GameCamera>(0, "gamecamra");
 
-	//backGround = NewGO<BackGround>(0, "background");
+	backGround = NewGO<BackGround>(0, "background");
 
 	gameUI = NewGO<GameUI>(0, "gameui");
 
@@ -52,6 +52,7 @@ void Game::Finish()
 {
 	DeleteGO(player);
 	DeleteGO(gameCamera);
+	DeleteGO(backGround);
 	DeleteGO(gameUI);
 	DeleteGO(timer);
 	DeleteGO(score);
