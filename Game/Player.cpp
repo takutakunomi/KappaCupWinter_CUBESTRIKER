@@ -302,6 +302,31 @@ void Player::UpdateBulletSprite(Bullet& bullet)
 	bullet.render.Update();
 }
 
+
+// 球と重なっているか:箱の上で球の中心にいちばん近い点を探し、その距離が半径より近ければ当たり
+bool Player::IsHitSphere(const Vector3& center, float sphereRadius) const
+{
+	Vector3 local = center - position;
+
+	Vector3 closest;
+	closest.x = Clamp(local.x, -halfSize, halfSize);
+	closest.y = Clamp(local.y, -halfSize, halfSize);
+	closest.z = Clamp(local.z, -halfSize, halfSize);
+
+	float distance = (local - closest).Length();
+	return distance < sphereRadius;
+}
+
+// 箱と重なっているか:x・y・z のすべてで、中心の距離が「半分の長さの合計」より近ければ当たり
+bool Player::IsHitBox(const Vector3& center, const Vector3& half) const
+{
+	Vector3 distance = center - position;
+
+	return fabsf(distance.x) < halfSize + half.x
+		&& fabsf(distance.y) < halfSize + half.y
+		&& fabsf(distance.z) < halfSize + half.z;
+}
+
 // ---------- 描画 ----------
 
 void Player::Render(RenderContext& rc)

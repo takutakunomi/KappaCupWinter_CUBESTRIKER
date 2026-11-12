@@ -12,10 +12,13 @@ public:
 
 	// ---- 敵などが使う情報 ----
 	const Vector3& GetPosition() const { return position; }
-	float GetRadius() const { return radius; }   // 当たり判定の半径
 	int GetLife() const { return life; }
 	bool IsInvincible() const { return invincibleTimer > 0.0f; }
 	void Damage();   // 被弾する(無敵中は何も起きない)
+
+	// 当たり判定(プレイヤーは、一辺100の箱)
+	bool IsHitSphere(const Vector3& center, float sphereRadius) const;   // 球と重なっているか(弾など)
+	bool IsHitBox(const Vector3& center, const Vector3& half) const;     // 箱と重なっているか(敵の本体など)
 
 private:
 	// 弾1発ぶんのデータ
@@ -44,7 +47,7 @@ private:
 	// プレイヤー
 	ModelRender modelRender;
 	Vector3 position = Vector3::Zero;
-	float radius = 40.0f;   // 当たり判定の半径(モデルの見た目より少し小さめ)
+	float halfSize = 50.0f;   // 当たり判定の箱の、中心からの半分の長さ(一辺100)
 	int life = 3;                   // ライフ
 	float invincibleTimer = 0.0f;   // 無敵の残り時間(秒)
 

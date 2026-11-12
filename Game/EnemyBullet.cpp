@@ -74,8 +74,7 @@ bool EnemyBullet::IsHitPlayer() const
 		return false;
 	}
 
-	float distance = (player->GetPosition() - position).Length();
-	return distance < player->GetRadius() + BULLET_INFO[type].hitRadius;
+	return player->IsHitSphere(position, BULLET_INFO[type].hitRadius);
 }
 
 // 3D の位置 → 画面の位置(画面中央が原点)。遠いほど小さく見せる

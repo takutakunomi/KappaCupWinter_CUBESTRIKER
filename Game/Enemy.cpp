@@ -158,7 +158,13 @@ bool Enemy::IsHitPlayer() const
 		return false;
 	}
 
-	return IsHit(player->GetPosition(), player->GetRadius());
+	// 敵の判定の形に合わせて、プレイヤー(箱)と重なっているかを聞く
+	if (collider.shape == enShape_Sphere)
+	{
+		return player->IsHitSphere(CalcColliderCenter(), collider.size.x);
+	}
+
+	return player->IsHitBox(CalcColliderCenter(), collider.size);
 }
 
 Player* Enemy::FindPlayer() const
