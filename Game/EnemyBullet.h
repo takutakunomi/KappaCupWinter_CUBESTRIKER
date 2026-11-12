@@ -26,6 +26,7 @@ public:
 	void Init(const Vector3& startPos, const Vector3& direction, EnBulletType bulletType, float speed);
 
 private:
+	bool IsExpired() const;     // 飛び続ける時間が終わったか
 	bool IsHitPlayer() const;   // プレイヤーに当たったか
 	void UpdateSprite();        // 3D の位置を、画面の位置に直して絵を動かす
 
@@ -35,5 +36,5 @@ private:
 	Vector3 position = Vector3::Zero;         // 3D 空間での位置
 	Vector3 velocity = Vector3::Zero;         // 1秒あたりの移動量
 	float lifeTimer = 0.0f;                   // 発射してからの時間(秒)
-	bool isVisible = true;                    // カメラの前にいるか
+	bool isVisible = true;                    // 画面に描くか
 };

@@ -12,6 +12,7 @@ public:
 
 	// ---- 敵などが使う情報 ----
 	const Vector3& GetPosition() const { return position; }
+	float GetHalfSize() const { return halfSize; }   // 当たり判定の箱の、中心からの半分の長さ
 	int GetLife() const { return life; }
 	bool IsInvincible() const { return invincibleTimer > 0.0f; }
 	void Damage();   // 被弾する(無敵中は何も起きない)
