@@ -54,6 +54,8 @@ void Enemy::Update()
 		return;
 	}
 
+	OnUpdate();   // 子クラスの追加処理(弾を撃つなど)
+
 	if (IsHitPlayer())
 	{
 		OnHitPlayer();
@@ -174,6 +176,19 @@ EnemyCollider Enemy::MakeBoxCollider(float sideLength) const
 	box.size = Vector3(half, half, half);
 	box.offset = Vector3::Zero;       // 原点が本体の中心なので、ずれなし
 	return box;
+}
+
+// 時間を進めて、interval 秒たったら true を返す(そのとき timer は 0 に戻る)
+bool Enemy::CountUpTimer(float& timer, float interval) const
+{
+	timer += g_gameTime->GetFrameDeltaTime();
+	if (timer < interval)
+	{
+		return false;
+	}
+
+	timer = 0.0f;
+	return true;
 }
 
 // ---------- 描画 ----------

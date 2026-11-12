@@ -3,7 +3,7 @@
 
 namespace
 {
-	const char* MODEL_PATH = "Assets/modelData/seaofclouds/purplebaron/purplebaron.tkm";   // 実際のパスに変更
+	const char* MODEL_PATH = "Assets/modelData/seaofclouds/purplebaron/purplebaron.tkm";   
 	const float SIDE_LENGTH = 300.0f;   // 本体の一辺(当たり判定)
 	const int MAX_HP = 40;
 	const int SCORE = 1000;

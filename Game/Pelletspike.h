@@ -11,4 +11,5 @@ public:
 protected:
 	const char* GetModelPath() override;
 	EnemyCollider GetCollider() override;
+
 };

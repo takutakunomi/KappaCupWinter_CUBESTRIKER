@@ -10,6 +10,7 @@
 #include "Enemy.h"
 #include "GameOver.h"
 #include "BossHpBar.h"
+#include "EnemyBullet.h"
 
 bool Game::Start()
 {
@@ -65,6 +66,11 @@ void Game::Finish()
 	for (Enemy* enemy : FindGOs<Enemy>("enemy"))
 	{
 		DeleteGO(enemy);
+	}
+
+	for (EnemyBullet* bullet : FindGOs<EnemyBullet>("enemybullet"))
+	{
+		DeleteGO(bullet);
 	}
 
 	DeleteGO(this);

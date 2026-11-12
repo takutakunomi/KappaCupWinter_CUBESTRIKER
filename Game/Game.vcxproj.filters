@@ -108,6 +108,7 @@
       <Filter>FauxOni</Filter>
     </ClCompile>
     <ClCompile Include="Bosshpbar.cpp" />
+    <ClCompile Include="EnemyBullet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -163,5 +164,6 @@
       <Filter>FauxOni</Filter>
     </ClInclude>
     <ClInclude Include="Bosshpbar.h" />
+    <ClInclude Include="EnemyBullet.h" />
   </ItemGroup>
 </Project>

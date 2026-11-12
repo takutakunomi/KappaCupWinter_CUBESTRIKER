@@ -60,10 +60,14 @@ protected:
 	// ---- 子クラスが書いてもよいもの ----
 	virtual void OnDefeated() {}                // 撃破されたときの追加処理
 	virtual void OnHitPlayer() {}               // プレイヤーに触れたときの処理
+	virtual void OnUpdate() {}                  // 毎フレームの追加処理(弾を撃つなど)
 
 	// ---- 子クラスが使える道具 ----
 	// 一辺の長さから、立方体の当たり判定を作る(原点が本体の中心の場合)
 	EnemyCollider MakeBoxCollider(float sideLength) const;
+
+	// 時間を進めて、interval 秒たったら true を返す(そのとき timer は 0 に戻る)
+	bool CountUpTimer(float& timer, float interval) const;
 
 protected:
 	// 敵ごとの数値(子クラスのコンストラクタで設定する)
