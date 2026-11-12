@@ -4,24 +4,38 @@
 
 namespace
 {
-	const char* SPRITE_PATH = "Assets/sprite/enemybullet/seaofclouds/orbspike/orb_medium.DDS";   // 弾の絵
-	const float SPRITE_SIZE = 64.0f;       // 絵の大きさ(ピクセル)
-	const float BULLET_RADIUS = 20.0f;     // 弾の当たり判定の半径
+	// 弾の種類ごとの情報
+	struct BulletInfo
+	{
+		const char* path;   // 絵のパス
+		float spriteSize;   // 絵の大きさ(ピクセル)
+		float hitRadius;    // 当たり判定の半径
+	};
+
+	// enum EnBulletType と同じ順番で書く
+	const BulletInfo BULLET_INFO[enBullet_Count] =
+	{
+		{ "Assets/sprite/enemybullet/seaofclouds/orbspike/orb_medium.DDS",    64.0f, 20.0f },   // 中玉・赤
+		{ "Assets/sprite/enemybullet/seaofclouds/grainspike/grain_rice.DDS",  48.0f, 14.0f },   // 米弾・オレンジ
+	};
+
 	const float LIFE_TIME = 8.0f;          // 弾が消えるまでの時間(秒)
 	const float SCALE_DISTANCE = 1000.0f;  // この距離のとき、絵が等倍
 }
 
 bool EnemyBullet::Start()
 {
-	spriteRender.Init(SPRITE_PATH, SPRITE_SIZE, SPRITE_SIZE);
+	const BulletInfo& info = BULLET_INFO[type];
+	spriteRender.Init(info.path, info.spriteSize, info.spriteSize);
 	UpdateSprite();
 	return true;
 }
 
 // 向きは長さ1にそろえて、速さをかける
-void EnemyBullet::Init(const Vector3& startPos, const Vector3& direction, float speed)
+void EnemyBullet::Init(const Vector3& startPos, const Vector3& direction, EnBulletType bulletType, float speed)
 {
 	position = startPos;
+	type = bulletType;
 
 	Vector3 dir = direction;
 	dir.Normalize();
@@ -60,7 +74,7 @@ bool EnemyBullet::IsHitPlayer() const
 	}
 
 	float distance = (player->GetPosition() - position).Length();
-	return distance < player->GetRadius() + BULLET_RADIUS;
+	return distance < player->GetRadius() + BULLET_INFO[type].hitRadius;
 }
 
 // 3D の位置 → 画面の位置(画面中央が原点)。遠いほど小さく見せる

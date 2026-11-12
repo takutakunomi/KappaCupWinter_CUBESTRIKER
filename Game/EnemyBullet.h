@@ -1,5 +1,15 @@
 #pragma once
 
+// 弾の種類(形と色)。名前は、絵のファイル名に合わせてある
+// 絵・大きさ・当たり判定は、EnemyBullet.cpp の表に書いてある(同じ順番で並べる)
+// 弾を増やすときは、ここと表に1行ずつ足す
+enum EnBulletType
+{
+	enBullet_OrbMedium,   // 中玉・赤         ダマトゲ
+	enBullet_GrainRice,   // 米弾・オレンジ   コメトゲ
+	enBullet_Count,       // 種類の数(表の大きさ)
+};
+
 // 敵の弾(1発ぶん)。まっすぐ飛んで、プレイヤーに当たるか、時間がたつと消える
 class EnemyBullet : public IGameObject
 {
@@ -11,8 +21,8 @@ public:
 	void Update();
 	void Render(RenderContext& rc);
 
-	// 発射位置、向き、速さを決める(NewGO の直後に呼ぶ)
-	void Init(const Vector3& startPos, const Vector3& direction, float speed);
+	// 発射位置、向き、弾の種類、速さを決める(NewGO の直後に呼ぶ)
+	void Init(const Vector3& startPos, const Vector3& direction, EnBulletType bulletType, float speed);
 
 private:
 	bool IsHitPlayer() const;   // プレイヤーに当たったか
@@ -20,8 +30,9 @@ private:
 
 private:
 	SpriteRender spriteRender;
-	Vector3 position = Vector3::Zero;   // 3D 空間での位置
-	Vector3 velocity = Vector3::Zero;   // 1秒あたりの移動量
-	float lifeTimer = 0.0f;             // 発射してからの時間(秒)
-	bool isVisible = true;              // カメラの前にいるか
+	EnBulletType type = enBullet_OrbMedium;   // 弾の種類
+	Vector3 position = Vector3::Zero;         // 3D 空間での位置
+	Vector3 velocity = Vector3::Zero;         // 1秒あたりの移動量
+	float lifeTimer = 0.0f;                   // 発射してからの時間(秒)
+	bool isVisible = true;                    // カメラの前にいるか
 };

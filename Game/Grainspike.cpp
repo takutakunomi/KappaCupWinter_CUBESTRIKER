@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Grainspike.h"
+#include "BulletPattern.h"
 
 namespace
 {
@@ -26,3 +27,11 @@ EnemyCollider Grainspike::GetCollider()
 	return MakeBoxCollider(SIDE_LENGTH);
 }
 
+// 一定時間ごとに、自機の方向へ米弾を扇状に3発撃つ
+void Grainspike::OnUpdate()
+{
+	if (CountUpTimer(shotTimer, SHOT_INTERVAL))
+	{
+		BulletPattern::ShootFan(position, enBullet_GrainRice, BULLET_SPEED, FAN_COUNT, FAN_ANGLE);
+	}
+}
