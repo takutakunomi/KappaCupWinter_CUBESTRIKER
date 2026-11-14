@@ -8,6 +8,9 @@ enum EnBulletType
 	enBullet_OrbMedium,   // 中玉・赤         ダマトゲ
 	enBullet_GrainRice,   // 米弾・オレンジ   コメトゲ
 	enBullet_PelletSmall, // 小玉・紫       ツブトゲ
+	enBullet_PurpleMedium, // 中玉・紫         ムラサキング
+	enBullet_PurpleRice,   // 米弾・紫         ムラサキング
+	enBullet_PurpleSmall,  // 小玉・紫         ムラサキング
 	enBullet_Count,       // 種類の数(表の大きさ)
 };
 
