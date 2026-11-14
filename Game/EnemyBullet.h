@@ -11,6 +11,10 @@ enum EnBulletType
 	enBullet_PurpleMedium, // 中玉・紫         ムラサキング
 	enBullet_PurpleRice,   // 米弾・紫         ムラサキング
 	enBullet_PurpleSmall,  // 小玉・紫         ムラサキング
+	enBullet_FakeLarge,    // 大玉             ニセオニ
+	enBullet_FakeMedium,   // 中玉             ニセオニ
+	enBullet_FakeRice,     // 米弾             ニセオニ
+	enBullet_FakeSmall,    // 小玉             ニセオニ
 	enBullet_Count,       // 種類の数(表の大きさ)
 };
 

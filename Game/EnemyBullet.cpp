@@ -21,6 +21,10 @@ namespace
 		{ "Assets/sprite/enemybullet/seaofclouds/purplebaron/purple_medium.DDS", 64.0f, 20.0f },   // 中玉・紫
 		{ "Assets/sprite/enemybullet/seaofclouds/purplebaron/purple_rice.DDS",   48.0f, 14.0f },   // 米弾・紫
 		{ "Assets/sprite/enemybullet/seaofclouds/purplebaron/purple_small.DDS",  32.0f, 10.0f },   // 小玉・紫
+		{ "Assets/sprite/enemybullet/seaofclouds/fauxoni/fake_large.DDS",        96.0f, 30.0f },   // 大玉
+		{ "Assets/sprite/enemybullet/seaofclouds/fauxoni/fake_medium.DDS",       64.0f, 20.0f },   // 中玉
+		{ "Assets/sprite/enemybullet/seaofclouds/fauxoni/fake_rice.DDS",         48.0f, 14.0f },   // 米弾
+		{ "Assets/sprite/enemybullet/seaofclouds/fauxoni/fake_small.DDS",        32.0f, 10.0f },   // 小玉
 	};
 
 	const float LIFE_TIME = 8.0f;          // 弾が消えるまでの時間(秒)
