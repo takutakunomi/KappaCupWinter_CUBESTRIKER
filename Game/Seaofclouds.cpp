@@ -20,6 +20,12 @@ namespace
 	const float BOSS_X = 0.0f;          // ボスの出現位置
 	const float BOSS_Y = 60.0f;
 
+	// ---- BGM ----
+	const int BGM_NUMBER = 0;                                     // 音の登録番号(ほかの音と重ならない番号にする)
+	const char* BGM_PATH = "Assets/music/sound/seaofclouds.wav";
+	const char* BGM_NAME = "bgm";                                 // 止めるときに探す名前
+	const float BGM_VOLUME = 0.5f;                                // 音量(0.0〜1.0)
+
 	// ---- 中ボスの前の出現予定(ステージ開始からの時間) ----
 	// 書き方: { 時間, 敵の種類, X, Y }
 	const SpawnData BEFORE_MIDBOSS[] =
@@ -67,7 +73,19 @@ namespace
 
 bool Seaofclouds::Start()
 {
+	StartBgm();
 	return true;
+}
+
+// 道中BGMを、ループで流す(止めるのは Game::Finish)
+void Seaofclouds::StartBgm()
+{
+	g_soundEngine->ResistWaveFileBank(BGM_NUMBER, BGM_PATH);   // 同じ番号は2回目から何もしないので、やり直しても大丈夫
+
+	SoundSource* bgm = NewGO<SoundSource>(0, BGM_NAME);
+	bgm->Init(BGM_NUMBER);
+	bgm->SetVolume(BGM_VOLUME);
+	bgm->Play(true);
 }
 
 void Seaofclouds::Update()

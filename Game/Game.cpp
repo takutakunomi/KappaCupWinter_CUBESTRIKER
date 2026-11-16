@@ -57,6 +57,7 @@ void Game::Finish()
 	DeleteGO(timer);
 	DeleteGO(score);
 	DeleteGO(FindGO<Seaofclouds>("seaofclouds"));
+	DeleteGO(FindGO<SoundSource>("bgm"));   // BGMを止める
 
 	BossHpBar* hpBar = FindGO<BossHpBar>("bosshpbar");
 	if (hpBar != nullptr)
