@@ -38,6 +38,7 @@ private:
 	Vector3 CalcAimTarget();                  // レティクルが指す3D空間の点を求める
 	void UpdateShooting();                    // 発射の判断
 	void FireBullet(Bullet& bullet);          // 弾を1発撃つ
+	void PlayShotSound();                     // 発射の効果音を鳴らす
 	void UpdateBullets();                     // 飛んでいる弾の更新
 	void UpdateBulletSprite(Bullet& bullet);  // 弾の3D位置を画面に反映
 	void UpdateInvincible();                  // 無敵時間を進める

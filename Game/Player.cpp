@@ -26,6 +26,12 @@ namespace
 	const float SHOT_INTERVAL = 0.08f;      // 発射の間隔(秒)
 	const float MUZZLE_HEIGHT = 50.0f;      // 発射位置の高さ(プレイヤーの中心から)
 	const float BULLET_SIZE = 64.0f;
+
+	// 効果音
+	const int SHOT_SE_NUMBER = 1;                                  // 音の登録番号(BGMが0なので、1)
+	const char* SHOT_SE_PATH = "Assets/music/se/playershot.wav";
+	const float SHOT_SE_VOLUME = 0.4f;                             // 音量(0.0〜1.0)
+
 	const float BULLET_SCALE_BASE = 600.0f; // 大きいほど弾が大きく見える
 	const float BULLET_SCALE_MIN = 0.1f;
 	const float BULLET_SCALE_MAX = 2.0f;
@@ -51,6 +57,8 @@ bool Player::Start()
 	}
 
 	reticleRender.Init("Assets/sprite/reticle/reticle.DDS", RETICLE_SIZE, RETICLE_SIZE);
+
+	g_soundEngine->ResistWaveFileBank(SHOT_SE_NUMBER, SHOT_SE_PATH);
 
 	return true;
 }
@@ -226,6 +234,16 @@ void Player::FireBullet(Bullet& bullet)
 
 	bullet.isActive = true;
 	UpdateBulletSprite(bullet);   // 撃った瞬間から正しい位置に表示する
+	PlayShotSound();
+}
+
+// 発射の効果音を1回鳴らす(鳴り終わると自動で消える)
+void Player::PlayShotSound()
+{
+	SoundSource* shotSound = NewGO<SoundSource>(0);
+	shotSound->Init(SHOT_SE_NUMBER);
+	shotSound->SetVolume(SHOT_SE_VOLUME);
+	shotSound->Play(false);
 }
 
 void Player::UpdateBullets()
